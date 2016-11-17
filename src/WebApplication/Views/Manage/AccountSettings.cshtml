@@ -1,0 +1,59 @@
+@using WebApplication.Models.ManageViewModels
+@model AccountSettingsViewModel
+
+@{
+    ViewData["Title"] = "Manage your account details";
+}
+
+<div>
+    <h4>Change your account settings</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        
+        <dt>User Name:</dt>
+        <dd>
+            @Model.UserName <text>[&nbsp;&nbsp;<a asp-controller="Manage" asp-action="ChangePassword">Change</a>&nbsp;&nbsp;]</text>
+</dd>
+        
+        <dt>Email:</dt>
+        <dd>
+            @Model.Email   
+        </dd>
+
+        <dt>Normalized:</dt>
+        <dd>
+            @Model.NormalizedUserName
+        </dd>
+
+        <dt>FirstName:</dt>
+        <dd>
+            @Model.FirstName
+        </dd>
+<dt>LastName:</dt>
+        <dd>
+            @Model.LastName
+        </dd>
+
+        <dt>Date Of Birth:</dt>
+        <dd>
+           @Model.DateOfBirth
+        </dd>
+
+        <dt>BirthCountry:</dt>
+        <dd>
+            @Model.BirthCountry
+        </dd>
+
+        <dt>CurrentCountry:</dt>
+        <dd>
+            @Model.CurrentCountry
+        </dd>
+
+        <dt>Image:</dt>
+        <dd>
+         @Model.Image
+        </dd>
+ 
+
+    </dl>
+</div>

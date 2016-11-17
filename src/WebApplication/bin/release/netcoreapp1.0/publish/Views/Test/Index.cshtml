@@ -1,0 +1,14 @@
+@model WenApplication.Models.EmailSend
+
+
+<form method="post" action="Form">
+        <span class="form-control-static">Receiver Email: </span>
+        <input asp-for="receiverEmail"/>
+        
+        <span class="form-control-static">Subject</span>
+       <input asp-for="subject"/>
+        <span class="form-control-static">Message</span>
+        <input asp-for="message"/>
+        <br />
+        <button class="btn btn-primary" type="submit" >Send Email</button>
+    </form>

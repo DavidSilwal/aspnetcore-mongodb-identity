@@ -1,0 +1,73 @@
+﻿@using Dnx.Identity.MongoDB
+@*@model IEnumerable<MongoIdentityUser>*@
+
+@model Sakura.AspNetCore.IPagedList<MongoIdentityUser>
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<p>
+    <span>Total Users: @Model.TotalCount</span>
+</p>
+<form asp-controller="UsersAdmin" asp-action="Index" method="get">
+    <p>
+        Title: <input type="text" name="SearchString">
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
+
+<pager source="Model"  />
+<table class="table">
+    <tr>
+            <th>
+                <label>UserName</label>
+                @*@Html.DisplayNameFor(model => model.UserName)*@
+            </th>
+            <th><label>Email</label>
+                @*@Html.DisplayNameFor(model => model.Email)*@
+            </th>
+            <th><label>Claims</label>
+                @*@Html.DisplayNameFor(model => model.Claims)*@
+            </th>
+            <th><label>CreatedOn</label>
+                @*@Html.DisplayNameFor(model => model.CreatedOn)*@
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+               
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email.Value)
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Claims):
+                @foreach (var claim in item.Claims)
+                {
+                    @Html.DisplayFor(modelItem => claim.ClaimValue)
+
+                }
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedOn.Instant)
+            </td>
+            
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>

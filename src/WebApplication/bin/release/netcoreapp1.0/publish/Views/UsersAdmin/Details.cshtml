@@ -1,0 +1,25 @@
+﻿@using Dnx.Identity.MongoDB
+@model MongoIdentityUser
+
+@{
+    ViewBag.Title = "Details";
+  
+}
+
+@Model.UserName
+@Model.Email.Value
+@foreach(var item in Model.Claims)
+{
+    @Html.DisplayFor(modelItem=>item.ClaimType)
+    @Html.DisplayFor(modelItem => item.ClaimValue)
+
+}
+@Model.CreatedOn.Instant
+@Model.IsLockoutEnabled
+@Model.LockoutEndDate
+@Model.Logins
+@Model.PhoneNumber
+@Model.SecurityStamp
+
+
+
